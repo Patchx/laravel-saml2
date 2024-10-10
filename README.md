@@ -1,3 +1,5 @@
+## Please note! This is a fork for personal use. If you are looking for the original package, please visit [https://github.com/24Slides/laravel-saml2](https://github.com/24Slides/laravel-saml2)
+
 ## [Laravel 5.4+] SAML Service Provider 
 
 [![Latest Stable Version][ico-version]][link-packagist]
