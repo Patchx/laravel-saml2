@@ -3,6 +3,7 @@
 namespace Slides\Saml2\Http\Controllers;
 
 use Slides\Saml2\Events\SignedIn;
+use Slides\Saml2\Events\SignedOut;
 use Slides\Saml2\Auth;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
@@ -104,6 +105,7 @@ class Saml2Controller extends Controller
             return redirect(config('saml2.errorRoute'));
         }
 
+        event(new SignedOut($user, $auth));
         return redirect(config('saml2.logoutRoute')); //may be set a configurable default
     }
 
