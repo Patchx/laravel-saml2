@@ -123,7 +123,19 @@ class Saml2Controller extends Controller
     {
         $redirectUrl = $auth->getTenant()->relay_state_url ?: config('saml2.loginRoute');
 
-        $auth->login($request->query('returnTo', $redirectUrl));
+        // Old version
+        // $auth->login($request->query('returnTo', $redirectUrl));
+
+        // Rob's version (Dec 2024):
+        $url = $auth->login(
+            $request->query('returnTo', $redirectUrl),
+            [],
+            false,
+            false,
+            true // this is the stay, means not to do the redirect yet and just return the url
+        );
+
+        return redirect()->to($url);
     }
 
     /**
